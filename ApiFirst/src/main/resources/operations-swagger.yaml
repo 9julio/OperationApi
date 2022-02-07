@@ -1,0 +1,56 @@
+openapi: 3.0.2
+info:
+  title: Operations API
+  description: API to do some Operations.
+  version: 0.0.1-SNAPSHOT
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: jafernandezg9@gmail.com
+    name: Julio Alberto Fernández Guerrero
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+externalDocs:
+  description: Find out more about Reflectoring
+  url: https://reflectoring.io/about/
+
+#servers:
+#  - url: https://reflectoring.swagger.io/v2
+
+paths:
+  /operations/{operation}:
+    get:
+      operationId: realiseOperation
+      tags:
+        - Operations
+      summary: Returns a result of the operation.
+      parameters:
+        - name: operation
+          in: path
+          description: Operation that you can realise.
+          required: true
+          schema:
+            type: string
+            enum:
+              - sum
+              - subtraction
+        - name: firstNumber
+          in: query
+          description: First number that you can operate.
+          required: true
+          schema:
+            type: number
+        - name: secondNumber
+          in: query
+          description: Second number that you can operate.
+          required: true
+          schema:
+            type: number
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: number
