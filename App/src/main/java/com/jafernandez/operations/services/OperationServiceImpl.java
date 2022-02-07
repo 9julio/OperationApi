@@ -1,5 +1,6 @@
 package com.jafernandez.operations.services;
 
+import com.jafernandez.operations.dto.OperationType;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -8,8 +9,21 @@ import java.math.BigDecimal;
 public class OperationServiceImpl implements OperationService {
 
     @Override
-    public BigDecimal realiseOperation(String operation, BigDecimal firstNumber, BigDecimal secondNumber) {
-        return BigDecimal.valueOf(2.87);
+    public BigDecimal realiseOperation(OperationType operation, BigDecimal firstNumber, BigDecimal secondNumber) {
+
+        BigDecimal result = null;
+
+        switch (operation) {
+            case SUBTRACTION:
+                result = firstNumber.subtract(secondNumber);
+                break;
+            case SUM:
+            default:
+                result = firstNumber.add(secondNumber);
+                break;
+        }
+
+        return result;
     }
 
 }

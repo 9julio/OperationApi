@@ -1,10 +1,12 @@
 package com.jafernandez.operations.controllers;
 
 import com.jafernandez.operations.OperationsApp;
+import io.corp.calculator.TracerAPI;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
@@ -22,10 +24,13 @@ public class OperationControllerTests {
   @Autowired
   private MockMvc mvc;
 
+  @MockBean
+  private TracerAPI tracerAPI;
+
   @Test
   public void realiseOperationOK() throws Exception {
 
-    String operation = "sum";
+    String operation = "SUM";
     String firstNumber = "1.1";
     String secondNumber = "2.2";
 
@@ -40,7 +45,7 @@ public class OperationControllerTests {
   @Test
   public void realiseOperationBadRequest() throws Exception {
 
-    String operation = "sum";
+    String operation = "SUM";
     String firstNumber = "XXX";
     String secondNumber = "2";
 
