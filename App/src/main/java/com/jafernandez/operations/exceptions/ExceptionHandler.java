@@ -50,17 +50,4 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
             .body(errorResponseDto);
   }
 
-  @org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)
-  public ResponseEntity<ErrorResponseDto> exception(Exception e) {
-
-    ErrorResponseDto errorResponseDto = new ErrorResponseDto();
-
-    errorResponseDto.setCode(BigDecimal.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()));
-    errorResponseDto.setDescription(e.getMessage());
-
-    return ResponseEntity
-            .internalServerError()
-            .body(errorResponseDto);
-  }
-
 }

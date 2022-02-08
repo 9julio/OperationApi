@@ -6,6 +6,13 @@ import java.math.BigDecimal;
 
 public interface OperationService {
 
-    public BigDecimal realiseOperation(OperationType operation, BigDecimal firstNumber, BigDecimal secondNumber);
+    /**
+     *
+     * @param operation
+     * @param firstNumber
+     * @param secondNumber
+     * @return
+     */
+    public BigDecimal performOperation(OperationType operation, BigDecimal firstNumber, BigDecimal secondNumber);
 
 }

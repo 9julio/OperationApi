@@ -6,7 +6,8 @@ import java.util.stream.Collectors;
 
 public enum OperationType {
     SUM,
-    SUBTRACTION;
+    SUBTRACTION,
+    MULTIPLY;
 
     public static Set<OperationType> allTypes = Arrays.stream(OperationType.values()).collect(Collectors.toSet());
 

@@ -1,6 +1,7 @@
 package com.jafernandez.operations.controllers;
 
 import com.jafernandez.operations.OperationsApp;
+import com.jafernandez.operations.dto.OperationType;
 import io.corp.calculator.TracerAPI;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("test")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = OperationsApp.class)
 @AutoConfigureMockMvc
-public class OperationControllerTests {
+public class OperationControllerIntegrationTests {
 
   @Autowired
   private MockMvc mvc;
@@ -28,9 +29,9 @@ public class OperationControllerTests {
   private TracerAPI tracerAPI;
 
   @Test
-  public void realiseOperationOK() throws Exception {
+  public void performOperation_happyPath_SumOK() throws Exception {
 
-    String operation = "SUM";
+    String operation = OperationType.SUM.name();
     String firstNumber = "1.1";
     String secondNumber = "2.2";
 
@@ -43,9 +44,9 @@ public class OperationControllerTests {
   }
 
   @Test
-  public void realiseOperationBadRequest() throws Exception {
+  public void performOperation_badFormatParam_givenException() throws Exception {
 
-    String operation = "SUM";
+    String operation = OperationType.SUM.name();
     String firstNumber = "XXX";
     String secondNumber = "2";
 
@@ -56,9 +57,9 @@ public class OperationControllerTests {
   }
 
   @Test
-  public void realiseOperationBadOperation() throws Exception {
+  public void performOperation_badOperationParam_givenException() throws Exception {
 
-    String operation = "fake";
+    String operation = "FAKE";
     String firstNumber = "1";
     String secondNumber = "2";
 
