@@ -49,4 +49,28 @@ public class OperationServiceTests {
             () -> this.operationService.performOperation(operation, firstNumber, secondNumber));
   }
 
+  @Test
+  public void performOperation_nullOperation_givenException() throws NotImplementedOperationTypeException {
+
+    OperationType operation = null;
+    BigDecimal firstNumber = BigDecimal.TEN;
+    BigDecimal secondNumber = BigDecimal.ONE;
+
+    NotImplementedOperationTypeException exception = assertThrows(
+            NotImplementedOperationTypeException.class,
+            () -> this.operationService.performOperation(operation, firstNumber, secondNumber));
+  }
+
+  @Test
+  public void performOperation_nullNumber_givenException() throws NotImplementedOperationTypeException {
+
+    OperationType operation = OperationType.SUM;
+    BigDecimal firstNumber = null;
+    BigDecimal secondNumber = BigDecimal.ONE;
+
+    NotImplementedOperationTypeException exception = assertThrows(
+            NotImplementedOperationTypeException.class,
+            () -> this.operationService.performOperation(operation, firstNumber, secondNumber));
+  }
+
 }

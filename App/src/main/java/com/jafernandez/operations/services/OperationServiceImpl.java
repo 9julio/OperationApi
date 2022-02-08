@@ -21,6 +21,12 @@ public class OperationServiceImpl implements OperationService {
     @Override
     public BigDecimal performOperation(OperationType operationType, BigDecimal firstNumber, BigDecimal secondNumber) {
 
+        if (operationType == null
+                || firstNumber == null
+                || secondNumber == null) {
+            throw new NotImplementedOperationTypeException("The params operation, firstNumber and secondNumber are mandatories.");
+        }
+
         BigDecimal result = null;
 
         switch (operationType) {
